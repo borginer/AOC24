@@ -22,7 +22,7 @@ func parseInts(strs []string) ([]int, error) {
 	return nums, nil
 }
 
-func checkUpdate(upt string, order map[int][]int) int {
+func medianRightUpdate(upt string, order map[int][]int) int {
 	numsStr := strings.Split(upt, ",")
 	nums, err := parseInts(numsStr)
 	if err != nil {
@@ -40,7 +40,7 @@ func checkUpdate(upt string, order map[int][]int) int {
 	return nums[len(nums)/2]
 }
 
-func checkWrongUpdate(upt string, order map[int][]int) int {
+func medianWrongUpdate(upt string, order map[int][]int) int {
 	numsStr := strings.Split(upt, ",")
 	nums, err := parseInts(numsStr)
 	if err != nil {
@@ -87,8 +87,8 @@ func main() {
 	rightOrderSum := 0
 	wrongOrderSum := 0
 	for scanner.Scan() {
-		rightOrderSum += checkUpdate(scanner.Text(), order)
-		wrongOrderSum += checkWrongUpdate(scanner.Text(), order)
+		rightOrderSum += medianRightUpdate(scanner.Text(), order)
+		wrongOrderSum += medianWrongUpdate(scanner.Text(), order)
 	}
 
 	fmt.Println("part 1:", rightOrderSum)
